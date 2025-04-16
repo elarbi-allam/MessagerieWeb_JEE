@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>Application de Messagerie</display-name>
+
+    <!-- Configuration JSTL -->
+    <jsp-config>
+        <taglib>
+            <taglib-uri>http://java.sun.com/jsp/jstl/core</taglib-uri>
+            <taglib-location>/WEB-INF/c.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+
+    <!-- Configuration des servlets -->
+    <servlet>
+        <servlet-name>AccueilServlet</servlet-name>
+        <servlet-class>elarbi.allam.tp.controller.AccueilServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AccueilServlet</servlet-name>
+        <url-pattern>/accueil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccueilServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ConnexionServlet</servlet-name>
+        <servlet-class>elarbi.allam.tp.controller.ConnexionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConnexionServlet</servlet-name>
+        <url-pattern>/connexion</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CompteServlet</servlet-name>
+        <servlet-class>elarbi.allam.tp.controller.CompteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CompteServlet</servlet-name>
+        <url-pattern>/compte</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InscriptionServlet</servlet-name>
+        <servlet-class>elarbi.allam.tp.controller.InscriptionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InscriptionServlet</servlet-name>
+        <url-pattern>/inscription</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SujetsServlet</servlet-name>
+        <servlet-class>elarbi.allam.tp.controller.SujetsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SujetsServlet</servlet-name>
+        <url-pattern>/sujets</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeconnexionServlet</servlet-name>
+        <servlet-class>elarbi.allam.tp.controller.DeconnexionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeconnexionServlet</servlet-name>
+        <url-pattern>/deconnexion</url-pattern>
+    </servlet-mapping>
+
+    <!-- Filter Configuration -->
+    <filter>
+        <filter-name>AuthenticationFilter</filter-name>
+        <filter-class>elarbi.allam.tp.controller.AuthenticationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/compte</url-pattern>
+    </filter-mapping>
+
+    <!-- Configuration de la session -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+        <cookie-config>
+            <http-only>true</http-only>
+        </cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+
+    <!-- Page d'accueil -->
+    <welcome-file-list>
+        <welcome-file>accueil</welcome-file>
+    </welcome-file-list>
+
+    <!-- Configuration des erreurs -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/accueil</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/accueil</location>
+    </error-page>
+</web-app>
